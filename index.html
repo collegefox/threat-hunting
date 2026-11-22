@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مكتشف ومحلل الثغرات | ساحة المحاكاة</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#0a1216;--bg2:#0e1a20;--line:#223a44;--ink:#e6f1ef;--muted:#8fa7ad;--vio:#b58cff;--acc:#2fd39a;--on:#06110d;color-scheme:dark}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef4f2;--bg2:#e3ecea;--line:#c9d8d4;--ink:#13222a;--muted:#52666d;--vio:#6a3fc4;--acc:#0b7d57;--on:#fff;color-scheme:light}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Tahoma,"Segoe UI",sans-serif;line-height:1.8}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg2);z-index:30}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{background:var(--bg2);border-bottom:1px solid var(--line);padding:14px 0}
+header .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--vio);color:var(--vio);box-shadow:0 0 18px -4px var(--vio);animation:hp 1.8s ease-in-out infinite}
+.ico svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes hp{50%{box-shadow:0 0 28px 0 var(--vio)}}
+h1{font-size:1.3rem;margin:0}
+.sub{color:var(--muted);font-size:.9rem;margin:0}
+.watch{margin-inline-start:auto;cursor:pointer;font:inherit;font-size:.9rem;font-weight:700;background:var(--vio);color:var(--on);border:1px solid var(--vio);border-radius:10px;padding:6px 18px;box-shadow:0 0 18px -4px var(--vio)}
+.watch[aria-expanded="true"]{background:transparent;color:var(--vio)}
+.vid{padding:24px 0 8px}
+.vid[hidden]{display:none}
+.vid h2{font-size:1.15rem;margin:0 0 10px;color:var(--vio)}
+.vid video{display:block;width:100%;max-width:960px;margin:0 auto;aspect-ratio:16/9;background:#000;border:1px solid var(--line);border-radius:14px;box-shadow:0 0 40px -12px var(--vio)}
+.arena{padding:16px 0 24px}
+.arena iframe{display:block;width:100%;height:calc(100vh - 90px);min-height:560px;border:1px solid var(--line);border-radius:14px;background:var(--bg2)}
+@media (prefers-reduced-motion:reduce){.ico{animation:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5"/><path d="M11.8 6 8.5 11.2h2.8L10 15l3.5-5.2h-2.8z" fill="currentColor"/></svg></div>
+  <div><h1>مكتشف ومحلل الثغرات</h1><p class="sub">ساحة المحاكاة · وضع المحاكاة بلا اتصال بأهداف حقيقية</p></div>
+  <button class="watch" id="watchBtn" type="button" aria-expanded="false" aria-controls="video">▶ مشاهدة</button>
+</div></header>
+
+<main class="wrap">
+  <section class="vid" id="video" aria-label="فيديو تعريفي" hidden>
+    <video controls playsinline preload="metadata"><source src="mktashif-althagharat.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video>
+  </section>
+
+  <section class="arena" aria-label="ساحة المحاكاة">
+    <iframe src="https://collegefox.github.io/threat-hunting/" title="مكتشف ومحلل الثغرات" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </section>
+</main>
+<script>
+(function(){
+  var b=document.getElementById('watchBtn'),v=document.getElementById('video'),m=v.querySelector('video');
+  b.addEventListener('click',function(){
+    var open=v.hidden;
+    v.hidden=!open;
+    b.setAttribute('aria-expanded',open);
+    b.textContent=open?'✕ إخفاء':'▶ مشاهدة';
+    if(open){v.scrollIntoView({behavior:'smooth',block:'nearest'});}else{m.pause();}
+  });
+})();
+</script>
+</body>
+</html>
